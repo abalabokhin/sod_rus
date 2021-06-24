@@ -19,9 +19,3 @@ where:
 * comment - always empty string
 * timestamp - linux epoch
 * translate - always "1"
-
-Make sure you install all the necessary python libraries: 
-```
-pip install textblob
-```
-

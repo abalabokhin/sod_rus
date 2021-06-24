@@ -2,7 +2,9 @@
 
 import argparse
 import re
+import itertools
 import time
+import sys
 from io import StringIO
 
 def convert_file(infile, outfiles):
@@ -20,17 +22,17 @@ def convert_file(infile, outfiles):
         numbers = find_number_re.findall(line)
         replicas = find_replica_re.findall(line)
         if len(numbers) != 1 or len(replicas) == 0 or len(replicas) > 2:
-            print('Bad line: \n {}'.format(line))
-            break
+            sys.exit('Bad line: \n {}'.format(line))
 
         if len(replicas) == 1:
             replicas.append(replicas[0])
 
         for i in range(2):
-            replicas[i] = replicas[i].replace('"', "'")
+            replicas[i] = re.sub('(")', lambda m, c=itertools.count(): m.group() if next(c) % 2 else "«",
+                     replicas[i])
+            replicas[i] = replicas[i].replace('"', '»')
             if replicas[i].find('"') != -1:
-                print('Bad line: \n {}'.format(line))
-                break
+                sys.exit('Bad line: \n {}'.format(line))
             out_texts[i].write('{},"{}","",{},1\n'.format(numbers[0], replicas[i], round(time.time())))
 
         if num % 100 == 0:

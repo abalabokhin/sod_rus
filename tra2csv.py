@@ -27,7 +27,10 @@ def convert_file(infile, outfiles):
         if len(replicas) == 1:
             replicas.append(replicas[0])
 
+        odd_q_n = False
         for i in range(2):
+            if replicas[i].count('"') % 2 != 0:
+                odd_q_n = True
             replicas[i] = re.sub('(")', lambda m, c=itertools.count(): m.group() if next(c) % 2 else "«",
                      replicas[i])
             replicas[i] = replicas[i].replace('"', '»')
@@ -35,7 +38,9 @@ def convert_file(infile, outfiles):
                 sys.exit('Bad line: \n {}'.format(line))
             out_texts[i].write('{},"{}","",{},1\n'.format(numbers[0], replicas[i], round(time.time())))
 
-        if num % 100 == 0:
+        if odd_q_n:
+            print('Odd number of " in line: \n {}'.format(line))
+        if num % 1000 == 0:
             print("processed {}/{}".format(num, lines_n))
 
     for i in range(2):

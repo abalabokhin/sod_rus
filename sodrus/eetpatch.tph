@@ -1,0 +1,86 @@
+
+ACTION_CLEAR_ARRAY ARRAY_TOKEN
+ACTION_DEFINE_ASSOCIATIVE_ARRAY ARRAY_TOKEN BEGIN
+	"XGIRLBOY_BG1P",        "0", "35", "1", "0", "приятель подруга" => ""
+	"PRO_GIRLBOY_BG1P",     "1", "35", "1", "0", "приятель подруга" => ""
+	"XLADYLORD_BG1P",       "0", "35", "1", "0", "милорд миледи"    => ""
+	"PRO_LADYLORD_BG1P",    "1", "35", "1", "0", "милорд миледи"    => ""
+	"XMALEFEMALE_BG1P",     "0", "35", "1", "0", "ец ка"            => ""
+	"PRO_MALEFEMALE_BG1P",  "1", "35", "1", "0", "ец ка"            => ""
+	"XMANWOMAN_BG1P",       "0", "35", "1", "0", "ик ица"           => ""
+	"PRO_MANWOMAN_BG1P",    "1", "35", "1", "0", "ик ица"           => ""
+	"XSONDAUGHTER_BG1P",    "0", "35", "1", "0", "ль льница"        => ""
+	"PRO_SONDAUGHTER_BG1P", "1", "35", "1", "0", "ль льница"        => ""
+	"ZZMANWOMAN_BG1P",      "0", "35", "1", "0", "мужчина женщина"  => ""
+	"PRO_ZZMANWOMAN_BG1P",  "1", "35", "1", "0", "мужчина женщина"  => ""
+	"ZZMALEFEMALE_BG1P",    "0", "35", "1", "0", "ец ка"            => ""
+	"PRO_ZZMALEFEMALE_BG1P","1", "35", "1", "0", "ец ка"            => ""
+	"ZZYY_YA_BG1P",         "0", "35", "1", "0", "ий ая"            => ""
+	"PRO_ZZYY_YA_BG1P",     "1", "35", "1", "0", "ий ая"            => ""
+	"ZZIN_NA_BG1P",         "0", "35", "1", "0", "ин на"            => ""
+	"PRO_ZZIN_NA_BG1P",     "1", "35", "1", "0", "ин на"            => ""
+END
+
+ACTION_CLEAR_ARRAY TOKEN_ARRAY
+ACTION_IF FILE_EXISTS_IN_GAME ~tokentxt.2da~ BEGIN
+	COPY_EXISTING ~tokentxt.2da~ ~override~
+		COUNT_2DA_ROWS 8 rws
+		PATCH_IF ( rws > 0 ) BEGIN
+			FOR ( i = 0 ; i < rws ; ++i ) BEGIN
+				READ_2DA_ENTRY i 1 8 token
+				READ_2DA_ENTRY i 2 8 prot
+				READ_2DA_ENTRY i 3 8 stat
+				READ_2DA_ENTRY i 4 8 value
+				READ_2DA_ENTRY i 5 8 equal
+				READ_2DA_ENTRY i 6 8 strt
+				READ_2DA_ENTRY i 7 8 strf
+				SPRINT string "%strt%     %strf%"
+				PATCH_IF NOT VARIABLE_IS_SET $TOKEN_ARRAY(~%token%~) BEGIN
+					DEFINE_ASSOCIATIVE_ARRAY TOKEN_ARRAY BEGIN
+						"%token%", "%prot%", "%stat%", "%value%", "%equal%", "%string%" => ""
+					END
+				END
+			END
+		END
+		BUT_ONLY_IF_IT_CHANGES
+END
+
+ACTION_PHP_EACH ARRAY_TOKEN AS tkn => _ BEGIN
+	OUTER_SPRINT ~zgg~ ~%tkn%~
+	PRINT ~%zgg%~
+	ACTION_IF NOT VARIABLE_IS_SET $TOKEN_ARRAY(~%zgg%~) BEGIN
+		ACTION_DEFINE_ASSOCIATIVE_ARRAY TOKEN_ARRAY BEGIN
+			"%tkn%", "%tkn_1%", "%tkn_2%", "%tkn_3%", "%tkn_4%", "%tkn_5%" => ""
+		END
+	END
+END
+
+<<<<<<<< tokentxt.2da
+2DA V1.0
+*
+           TOKEN_TEXT             PROTAGONIST STAT       VALUE      EQUALITY   STRINGT    STRINGF    
+
+>>>>>>>>
+
+COPY ~tokentxt.2da~ ~override~
+
+OUTER_SET idx = 0
+OUTER_SPRINT append ""
+ACTION_PHP_EACH TOKEN_ARRAY AS tkn => _ BEGIN
+	OUTER_SPRINT "append" "%idx%  %tkn%  %tkn_1%  %tkn_2%  %tkn_3%  %tkn_4%   %tkn_5%"
+	OUTER_SET idx += 1
+	APPEND ~tokentxt.2da~ ~%append%~ UNLESS ~%tkn%~
+	OUTER_SPRINT append ""
+END
+
+COPY_EXISTING ~tokentxt.2da~ ~override~
+	PRETTY_PRINT_2DA
+
+
+
+
+
+
+
+
+

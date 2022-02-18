@@ -1,0 +1,16 @@
+BACKUP ~sodrus\backup~
+AUTHOR ~Lord_Draconis~
+
+VERSION ~beta0.06-v12~
+
+BEGIN ~Full russian text for BG:Siege of Dragonspear v2.6.6~
+REQUIRE_PREDICATE ( GAME_IS ~bgee~ AND GAME_INCLUDES ~sod~ ) ~This game is not supported~
+
+STRING_SET_RANGE #34000 #71403 USING ~sodrus\tra\sod-russian.tra~
+
+/*INCLUDE ~sodrus\eetpatch.tph~
+
+BEGIN ~Patch tokens for support BG:Siege of Dragonspear in EET ~
+REQUIRE_PREDICATE ( GAME_IS ~eet~ ) ~Not support game~
+
+INCLUDE ~sodrus\eetpatch.tph~*/

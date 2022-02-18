@@ -1,5 +1,8 @@
-# tra2cvs 
-The script to convert one \*.tra file (a localization file for infinity engine modding) into two \*.csv file (one
+# sod_rus
+
+The repo contains the current Russian translation for Baldur's Gate: Siege of Dragonspear (SOD).
+
+It also contain the script to convert one \*.tra file (a localization file for infinity engine modding) into two \*.csv file (one
 for male and another one for female).
 
 The script should be used like this:

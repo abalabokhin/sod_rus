@@ -1,7 +1,7 @@
 BACKUP ~sodrus\backup~
 AUTHOR ~Lord_Draconis~
 
-VERSION ~beta0.07-v1~
+VERSION ~beta0.07-v2~
 
 BEGIN ~Full russian text for BG:Siege of Dragonspear v2.6.6~
 REQUIRE_PREDICATE ( GAME_IS ~bgee~ AND GAME_INCLUDES ~sod~ ) ~This game is not supported~

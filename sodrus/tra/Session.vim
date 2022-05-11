@@ -45,12 +45,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 11205 - ((11 * winheight(0) + 19) / 39)
+let s:l = 12862 - ((15 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 11205
-normal! 029|
+keepjumps 12862
+normal! 0130|
 wincmd w
 argglobal
 if bufexists("sod-russian.tra") | buffer sod-russian.tra | else | edit sod-russian.tra | endif
@@ -65,12 +65,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 11245 - ((21 * winheight(0) + 18) / 36)
+let s:l = 13006 - ((23 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 11245
-normal! 034|
+keepjumps 13006
+normal! 086|
 wincmd w
 2wincmd w
 exe '1resize ' . ((&lines * 39 + 39) / 78)

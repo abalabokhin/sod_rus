@@ -3,7 +3,7 @@ AUTHOR ~Lord_Draconis~
 
 VERSION ~beta0.07-v7~
 
-BEGIN ~Use original Prozh terms~
+BEGIN ~Use original Prozh terms (DO NOT INSTALL THIS UNLESS YOU UNDERSTAND WHY YOU NEED THIS!)~
 COPY ~sodrus\tra\sod-russian.tra~ ~sodrus\tra\sod-russian.tra~
 REPLACE_TEXTUALLY CASE_SENSITIVE ~Халид~ ~Кхалид~
 REPLACE_TEXTUALLY CASE_SENSITIVE ~Горайон~ ~Горион~

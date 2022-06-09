@@ -1,9 +1,10 @@
 BACKUP ~sodrus\backup~
 AUTHOR ~Lord_Draconis~
 
-VERSION ~beta0.07-v7~
+VERSION ~beta0.07-v8~
 
-BEGIN ~Use original Prozh terms (DO NOT INSTALL THIS UNLESS YOU UNDERSTAND WHY YOU NEED THIS!)~
+BEGIN ~Use original Prozh names~
+FORBID_COMPONENT ~bgeetextpackeetnames.tp2~ ~0~ ~The component to revert names to original prozh names is skipped, cause EET Russian translation with proper EET names is detected.~
 COPY ~sodrus\tra\sod-russian.tra~ ~sodrus\tra\sod-russian.tra~
 REPLACE_TEXTUALLY CASE_SENSITIVE ~Халид~ ~Кхалид~
 REPLACE_TEXTUALLY CASE_SENSITIVE ~Горайон~ ~Горион~

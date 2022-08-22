@@ -1,7 +1,7 @@
 BACKUP ~sodrus\backup~
 AUTHOR ~Lord_Draconis~
 
-VERSION ~beta0.07-v8~
+VERSION ~beta0.07-v9~
 
 BEGIN ~Use original Prozh names~
 FORBID_COMPONENT ~bgeetextpackeetnames.tp2~ ~0~ ~The component to revert names to original prozh names is skipped, cause EET Russian translation with proper EET names is detected.~

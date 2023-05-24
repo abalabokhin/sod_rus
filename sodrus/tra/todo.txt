@@ -1,1 +1,0 @@
-Fix all items description to match bg1/bg2 translation
